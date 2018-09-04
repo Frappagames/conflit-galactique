@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.frappagames.conflitgalactic.utils.Assets;
 
 public class ConflitGalactic extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -14,6 +15,8 @@ public class ConflitGalactic extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
+		Assets.load();
+
 		batch = new SpriteBatch();
 		galaxy = new Galaxy(NB_PLANET);
 	}

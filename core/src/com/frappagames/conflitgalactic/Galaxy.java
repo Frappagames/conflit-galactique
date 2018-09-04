@@ -1,9 +1,6 @@
 package com.frappagames.conflitgalactic;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ArrayMap;
@@ -14,16 +11,20 @@ import java.util.Random;
 public class Galaxy {
     private static final int GALAXY_WIDTH = 95;
     private static final int GALAXY_HEIGHT = 71;
-    private static final int TILE_SIZE = 10;
 
     private ArrayMap<Vector2, Planet> map;
-    private Texture img;
 
-    public Galaxy(int nbPlanets)
-    {
+    private int nbPlanets;
+
+    public Galaxy(int nbPlanets) {
+        this.nbPlanets = nbPlanets;
+
+        init();
+    }
+
+    private void init() {
         Random random = new Random();
         Vector2 position;
-
         map = new ArrayMap<Vector2, Planet>();
 
         // add player planet
@@ -41,8 +42,6 @@ public class Galaxy {
                 map.put(position, new Planet(0));
             }
         }
-
-        img = new Texture("planet-small-empty.png");
     }
 
     private boolean hasPlanetArround(Vector2 position) {
@@ -65,11 +64,12 @@ public class Galaxy {
     {
         for (int i = 0; i < map.size; i++) {
             Vector2 position = map.getKeyAt(i);
-            map.getValueAt(i).drawForMinimap(batch, position.x * TILE_SIZE, position.y * TILE_SIZE);
+//            map.getValueAt(i).drawForMinimap(batch, position.x, position.y);
+            map.getValueAt(i).drawForGalaxyMap(batch, position.x, position.y);
         }
     }
 
     public void dispose () {
-        img.dispose();
+
     }
 }

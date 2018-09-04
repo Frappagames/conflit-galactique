@@ -1,6 +1,5 @@
 package com.frappagames.conflitgalactic;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ArrayMap;
@@ -13,8 +12,9 @@ public class Galaxy {
     private static final int GALAXY_HEIGHT = 71;
 
     private ArrayMap<Vector2, Planet> map;
+    public Vector2 currentPosition;
 
-    private int nbPlanets;
+    private int                nbPlanets;
 
     public Galaxy(int nbPlanets) {
         this.nbPlanets = nbPlanets;
@@ -29,6 +29,7 @@ public class Galaxy {
 
         // add player planet
         position = new Vector2(random.nextInt(GALAXY_WIDTH) / 3, random.nextInt(GALAXY_HEIGHT) / 2 + GALAXY_HEIGHT / 2);
+        currentPosition = position;
         map.put(position, new Planet(1));
 
         // add enemy planet
@@ -64,8 +65,12 @@ public class Galaxy {
     {
         for (int i = 0; i < map.size; i++) {
             Vector2 position = map.getKeyAt(i);
+//            if (position.x > currentPosition.x - 7 && position.x < currentPosition.x + 6
+//                && position.y > currentPosition.y - 5 && position.y < currentPosition.y + 5) {
+
 //            map.getValueAt(i).drawForMinimap(batch, position.x, position.y);
-            map.getValueAt(i).drawForGalaxyMap(batch, position.x, position.y);
+                map.getValueAt(i).drawForGalaxyMap(batch, position.x, position.y);
+//            }
         }
     }
 

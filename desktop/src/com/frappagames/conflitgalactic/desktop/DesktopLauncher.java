@@ -10,6 +10,8 @@ public class DesktopLauncher {
 
 		config.width = 860;
 		config.height = 540;
+		config.useGL30 = true;
+		config.samples = 3;
 
 		new LwjglApplication(new ConflitGalactic(), config);
 	}

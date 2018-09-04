@@ -19,7 +19,6 @@ public class Planet {
     private TextureRegion halo;
     private TextureRegion design;
     private int           designNumber;
-    private int           planetStatus;
 
     public Planet(int status)
     {
@@ -31,17 +30,15 @@ public class Planet {
     }
 
     public void drawForMinimap(Batch batch, float x, float y) {
-        batch.draw(img, x * MINIMAP_SIZE, y * MINIMAP_SIZE);
+        batch.draw(img, x * MINIMAP_SIZE - MINIMAP_SIZE / 2, y * MINIMAP_SIZE - MINIMAP_SIZE / 2);
     }
 
     public void drawForGalaxyMap(Batch batch, float x, float y) {
-        System.out.println("draw at " + x + ":" + y);
-        batch.draw(halo, x * PLANET_SIZE, y * PLANET_SIZE);
-        batch.draw(design, x * PLANET_SIZE, y * PLANET_SIZE);
+        batch.draw(halo, x * PLANET_SIZE - PLANET_SIZE / 2, y * PLANET_SIZE - PLANET_SIZE / 2);
+        batch.draw(design, x * PLANET_SIZE - PLANET_SIZE / 2, y * PLANET_SIZE - PLANET_SIZE / 2);
     }
 
     public void setPlanetStatus(int planetStatus) {
-        this.planetStatus = planetStatus;
 
         switch (planetStatus) {
             case 1:
